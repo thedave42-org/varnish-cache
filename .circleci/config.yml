@@ -132,6 +132,7 @@ jobs:
     steps:
       - run:
           command: |
+            ls /var/lib/pacman/
             pacman -Suy --noconfirm
   distcheck:
     parameters:
