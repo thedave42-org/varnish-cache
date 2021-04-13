@@ -126,6 +126,13 @@ jobs:
           root: .
           paths:
             - "packages"
+  arch_test:
+    docker:
+      - image: archlinux:latest
+    steps:
+      - run:
+          command: |
+            pacman -Suy --noconfirm
   distcheck:
     parameters:
       dist:
@@ -274,6 +281,7 @@ workflows:
   version: 2
   commit:
     jobs:
+      - arch_test
       - dist
       - distcheck:
           name: distcheck_centos_7
